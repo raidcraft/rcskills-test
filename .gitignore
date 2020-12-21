@@ -114,7 +114,7 @@ lib-cov
 coverage
 *.lcov
 
-# nyc test coverage
+# nyc de.raidcraft.skills.test coverage
 .nyc_output
 
 # Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
@@ -162,7 +162,7 @@ web_modules/
 
 # dotenv environment variables file
 .env
-.env.test
+.env.de.raidcraft.skills.test
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
@@ -198,7 +198,7 @@ dist
 .tern-port
 
 # Stores VSCode versions used for testing VSCode extensions
-.vscode-test
+.vscode-de.raidcraft.skills.test
 
 # yarn v2
 

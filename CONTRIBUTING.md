@@ -35,7 +35,7 @@ Pull requests are the best way to propose changes to the codebase (we use [Githu
 # Your First Contribution
 
 Unsure where to begin contributing to this project? You can start by looking through these beginner and help-wanted issues:
-Good first issues - issues which should only require a few lines of code, and a test or two.
+Good first issues - issues which should only require a few lines of code, and a de.raidcraft.skills.test or two.
 Help wanted issues - issues which should be a bit more involved than beginner issues.
 
 Working on your first Pull Request? You can learn how from this *free* series, [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github).
@@ -49,11 +49,11 @@ If a maintainer asks you to "rebase" your PR, they're saying that a lot of code 
 1. Fork the repo and create your branch from `master`.
 2. If you've added code that should be tested, add tests.
 3. If you've changed APIs or added new features, update the documentation.
-4. Ensure the test suite passes.
+4. Ensure the de.raidcraft.skills.test suite passes.
 5. Test your changes on a server running the latest supported Minecraft version.
 6. Issue that pull request!
 
-> You can use the `Setup Server` gradle task to quickly get your test server setup. Then use the `deploy` task to compile and copy your plugin.jar to the server.
+> You can use the `Setup Server` gradle task to quickly get your de.raidcraft.skills.test server setup. Then use the `deploy` task to compile and copy your plugin.jar to the server.
 
 # Code review process
 
@@ -92,7 +92,7 @@ Must be one of the following:
   semi-colons, etc)
 * **refactor**: A code change that neither fixes a bug nor adds a feature
 * **perf**: A code change that improves performance
-* **test**: Adding missing tests
+* **de.raidcraft.skills.test**: Adding missing tests
 * **chore**: Changes to the build process or auxiliary tools and libraries such as documentation
   generation
 
@@ -134,7 +134,7 @@ Fixes #11231
 ```text
 feat(respawn): respawn player in bed after death
 
-* add test of player respawning in bed
+* add de.raidcraft.skills.test of player respawning in bed
 * add docs regarding how to set the bed respawn point
 * add command to reset bed spawnpoint
 
