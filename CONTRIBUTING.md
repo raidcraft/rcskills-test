@@ -35,7 +35,7 @@ Pull requests are the best way to propose changes to the codebase (we use [Githu
 # Your First Contribution
 
 Unsure where to begin contributing to this project? You can start by looking through these beginner and help-wanted issues:
-Good first issues - issues which should only require a few lines of code, and a de.raidcraft.skills.test or two.
+Good first issues - issues which should only require a few lines of code, and a test or two.
 Help wanted issues - issues which should be a bit more involved than beginner issues.
 
 Working on your first Pull Request? You can learn how from this *free* series, [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github).
@@ -49,11 +49,11 @@ If a maintainer asks you to "rebase" your PR, they're saying that a lot of code 
 1. Fork the repo and create your branch from `master`.
 2. If you've added code that should be tested, add tests.
 3. If you've changed APIs or added new features, update the documentation.
-4. Ensure the de.raidcraft.skills.test suite passes.
+4. Ensure the test suite passes.
 5. Test your changes on a server running the latest supported Minecraft version.
 6. Issue that pull request!
 
-> You can use the `Setup Server` gradle task to quickly get your de.raidcraft.skills.test server setup. Then use the `deploy` task to compile and copy your plugin.jar to the server.
+> You can use the `Setup Server` gradle task to quickly get your test server setup. Then use the `deploy` task to compile and copy your plugin.jar to the server.
 
 # Code review process
 
@@ -62,7 +62,7 @@ The core team will look at your change as soon as possible and review it. Howeve
 # Code, commit message and labeling conventions
 
 We have very precise rules over how our git commit messages can be formatted. This leads to **more
-readable messages** that are easy to follow when looking through the **project history**. 
+readable messages** that are easy to follow when looking through the **project history**.
 
 It is important to note that we use the git commit messages to **generate** the [CHANGELOG](CHANGELOG.md) document. Improperly formatted commit messages may result in your
 change not appearing in the CHANGELOG of the next release.
@@ -80,7 +80,7 @@ format that includes a **type**, a **scope** and a **subject**:
 ```
 
 > Any line of the commit message cannot be longer 100 characters!<br/>
-  This allows the message to be easier to read on GitHub as well as in various Git tools.
+This allows the message to be easier to read on GitHub as well as in various Git tools.
 
 ##### Type
 Must be one of the following:
@@ -92,7 +92,7 @@ Must be one of the following:
   semi-colons, etc)
 * **refactor**: A code change that neither fixes a bug nor adds a feature
 * **perf**: A code change that improves performance
-* **de.raidcraft.skills.test**: Adding missing tests
+* **test**: Adding missing tests
 * **chore**: Changes to the build process or auxiliary tools and libraries such as documentation
   generation
 
@@ -121,7 +121,7 @@ The footer should contain any information about **Breaking Changes** and is also
 reference GitHub issues that this commit **Closes**, **Fixes**, or **Relates to**.
 
 > Breaking Changes are intended to be highlighted in the ChangeLog as changes that will require
-  community users to modify their code after updating to a version that contains this commit.
+community users to modify their code after updating to a version that contains this commit.
 
 ##### Sample Commit messages:
 ```text
@@ -134,7 +134,7 @@ Fixes #11231
 ```text
 feat(respawn): respawn player in bed after death
 
-* add de.raidcraft.skills.test of player respawning in bed
+* add test of player respawning in bed
 * add docs regarding how to set the bed respawn point
 * add command to reset bed spawnpoint
 
