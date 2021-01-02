@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/raidcraft/rcskills-test/compare/v1.0.0...v2.0.0) (2021-01-02)
+
+
+### Features
+
+* implement methods to load from context ([5d6cf70](https://github.com/raidcraft/rcskills-test/commit/5d6cf70f6103d869629e5e376dcf902d629083c0))
+
+
+### BREAKING CHANGES
+
+* removed old add and load methods in favor of new improved methods to load and add skills
+
 # 1.0.0 (2020-12-21)
 
 
