@@ -3,50 +3,105 @@ package de.raidcraft.skills.test;
 import be.seeseemelk.mockbukkit.MockBukkit;
 import be.seeseemelk.mockbukkit.ServerMock;
 import de.raidcraft.skills.Skill;
+import de.raidcraft.skills.SkillContext;
 import de.raidcraft.skills.SkillsPlugin;
 import de.raidcraft.skills.entities.ConfiguredSkill;
 import de.raidcraft.skills.entities.PlayerSkill;
 import de.raidcraft.skills.entities.SkilledPlayer;
 import de.raidcraft.skills.util.RandomString;
 import lombok.Getter;
+import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.MemoryConfiguration;
 import org.bukkit.entity.Player;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.mockito.Mock;
+
+import javax.naming.ldap.Rdn;
+import java.util.UUID;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
+
+import static org.mockito.Mockito.spy;
 
 @Getter
 public class RCSkillsTest {
 
-    public static RCSkillsTest load() {
+    private final RandomString randomString = new RandomString();
+    private ServerMock server;
+    private SkillsPlugin plugin;
 
-        return new RCSkillsTest(MockBukkit.mock(new ServerMock()), MockBukkit.load(SkillsPlugin.class));
+    @BeforeEach
+    public void load() {
+
+        server = MockBukkit.mock();
+        plugin = MockBukkit.load(SkillsPlugin.class);
     }
 
-    public static void unload() {
+    @AfterEach
+    public void unload() {
 
         MockBukkit.unmock();
     }
 
-    private final ServerMock server;
-    private final SkillsPlugin plugin;
+    protected SkilledPlayer player() {
 
-    public RCSkillsTest(ServerMock server, SkillsPlugin plugin) {
-
-        this.server = server;
-        this.plugin = plugin;
+        return SkilledPlayer.getOrCreate(server.addPlayer(randomString.nextString()));
     }
 
-    public PlayerSkill addSkill(Class<? extends Skill> skillClass) {
+    protected ConfiguredSkill load(ConfigurationSection config) {
 
-        return addSkill(skillClass, server.addPlayer(new RandomString().nextString()));
+        return load(TestSkill.class, TestSkill::new, skill -> {
+        }, config);
     }
 
-    public PlayerSkill addSkill(Class<? extends Skill> skillClass, Player player) {
+    protected ConfiguredSkill load(Consumer<ConfiguredSkill> skill) {
 
-        ConfiguredSkill skill = getPlugin().getSkillManager().loadSkill(skillClass);
+        return load(TestSkill.class, TestSkill::new, skill, new MemoryConfiguration());
+    }
 
-        player.addAttachment(plugin, SkillsPlugin.BYPASS_ACTIVE_SKILL_LIMIT, true);
-        player.addAttachment(plugin, SkillsPlugin.SKILL_PERMISSION_PREFIX + skill.alias(), true);
+    protected <TSkill extends Skill> ConfiguredSkill load(Class<TSkill> skillClass,
+                                                          Function<SkillContext, TSkill> supplier,
+                                                          Consumer<ConfiguredSkill> skill,
+                                                          ConfigurationSection config) {
 
-        return SkilledPlayer.getOrCreate(player)
-                .addSkill(skill)
-                .playerSkill();
+        plugin.getSkillManager().registerSkill(skillClass, supplier);
+
+        ConfiguredSkill test = ConfiguredSkill.getOrCreate(UUID.randomUUID())
+                .alias(randomString.nextString())
+                .type("test");
+        skill.accept(test);
+        return test.load(config);
+    }
+
+    protected PlayerSkill loadAndAdd() {
+
+        return loadAndAdd(skill -> {});
+    }
+
+    protected PlayerSkill loadAndAdd(Consumer<ConfiguredSkill> skill) {
+
+        return player().addSkill(load(skill), true).playerSkill();
+    }
+
+    protected PlayerSkill addToPlayer(SkilledPlayer player, ConfiguredSkill skill) {
+
+        return player.addSkill(skill, true).playerSkill();
+    }
+
+    protected SkillContext loadContext() {
+
+        return loadContext(skill -> {});
+    }
+
+    protected SkillContext loadContext(Consumer<ConfiguredSkill> skill) {
+
+        return plugin.getSkillManager().loadSkill(loadAndAdd(skill));
+    }
+
+    protected SkillContext loadContext(PlayerSkill skill) {
+
+        return plugin.getSkillManager().loadSkill(skill);
     }
 }
