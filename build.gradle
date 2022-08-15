@@ -49,7 +49,7 @@ repositories {
 }
 
 dependencies {
-    implementation "org.spigotmc:spigot-api:1.19-R0.1-SNAPSHOT"
+    implementation "org.spigotmc:spigot-api:1.19.2-R0.1-SNAPSHOT"
 
     api 'de.raidcraft:rcskills:2.4.1'
     api 'net.silthus:ebean-wrapper:2.9.1'
@@ -64,7 +64,7 @@ dependencies {
     implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.23'
 
     implementation 'org.junit.jupiter:junit-jupiter:5.+'
-    implementation "org.mockito:mockito-core:3.+"
+    implementation "org.mockito:mockito-core:4.+"
     implementation 'org.assertj:assertj-core:3.+'
     implementation 'com.github.seeseemelk:MockBukkit-v1.16:1.0.1'
 }
