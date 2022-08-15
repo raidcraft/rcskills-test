@@ -64,7 +64,7 @@ dependencies {
     implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.23'
 
     implementation 'org.junit.jupiter:junit-jupiter:5.+'
-    implementation "org.mockito:mockito-core:3.+"
+    implementation "org.mockito:mockito-core:4.+"
     implementation 'org.assertj:assertj-core:3.+'
     implementation 'com.github.seeseemelk:MockBukkit-v1.16:1.0.1'
 }
