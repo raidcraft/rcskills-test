@@ -9,7 +9,7 @@ plugins {
     id 'java-library'
     id 'jacoco'
     id 'idea'
-    id 'io.freefair.lombok' version '6.5.0.3'
+    id 'io.freefair.lombok' version '6.5.1'
     id 'io.ebean' version '13.8.0'
 }
 
@@ -54,13 +54,13 @@ dependencies {
     api 'de.raidcraft:rcskills:2.4.1'
     api 'net.silthus:ebean-wrapper:2.9.1'
 
-    implementation 'io.ebean:ebean-test:13.8.0'
+    implementation 'io.ebean:ebean-test:13.9.1'
 
     implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
     implementation group: 'com.h2database', name: 'h2', version: '1.4.200'
     implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '3.0.5'
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.30'
-    implementation group: 'org.xerial', name: 'sqlite-jdbc', version: '3.39.2.0'
+    implementation group: 'org.xerial', name: 'sqlite-jdbc', version: '3.39.2.1'
     implementation group: 'org.postgresql', name: 'postgresql', version: '42.5.0'
 
     implementation 'org.junit.jupiter:junit-jupiter:5.+'
