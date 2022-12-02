@@ -9,7 +9,7 @@ plugins {
     id 'java-library'
     id 'jacoco'
     id 'idea'
-    id 'io.freefair.lombok' version '6.5.0.3'
+    id 'io.freefair.lombok' version '6.6'
     id 'io.ebean' version '13.8.0'
 }
 
